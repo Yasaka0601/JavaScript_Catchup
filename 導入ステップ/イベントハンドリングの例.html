@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>イベントハンドリングの例</title>
+</head>
+<body>
+    <h1 id="header">Click the button to change this text</h1>
+    <button id="changeTextButton">Change Text</button>
+
+    <script>
+        // ボタン要素を取得
+        let button = document.getElementById('changeTextButton');
+
+        // ボタンにクリックイベントハンドラを追加
+        button.addEventListener('click', function() {
+            // h1要素のテキストを変更
+            let header = document.getElementById('header');
+            header.textContent = 'Text has been changed!';
+        });
+    </script>
+</body>
+</html>
