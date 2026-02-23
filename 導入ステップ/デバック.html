@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100">
+  <main class="p-14">
+    <div id="rantekun-background" class="relative m-auto" style="width: 896px; height: 360px; background-image: url(https://resource.runteq.jp/curriculum-img/bg-1.png); background-size: cover;">
+      <img src="https://resource.runteq.jp/curriculum-img/rantekun.svg" alt="らんてくん" width="158" height="246" id="rantekun" class="absolute" style="bottom: 28px; left: 374px;">
+    </div>
+    <div class="mt-10 px-6 flex justify-center">
+      <button id="change-background" class="px-9 py-3 bg-orange-500 hover:bg-orange-600 flex items-center justify-center rounded-lg">
+        <img src="https://resource.runteq.jp/curriculum-img/icon-reload.svg" alt="背景変更アイコン" width="34" height="34" class="mr-2">
+        <span class="text-xl font-bold text-white">背景変更</span>
+      </button>
+    </div>
+  </main>
+  <script>
+    // 画像のURLを定義する
+    const backgroundImage1 = 'url("https://resource.runteq.jp/curriculum-img/bg-1.png")';
+    const backgroundImage2 = 'url("https://resource.runteq.jp/curriculum-img/bg-2.png")';
+
+    // 背景画像の状態を定義する
+    let isBackgroundImage1 = true;
+
+    // ボタン要素を取得
+    const button = document.getElementById('change-background');
+
+    // 背景画像を取得
+    const background = document.getElementById('rantekun-background');
+
+    //ボタン要素にクリックイベントを設定
+    button.addEventListener('click', function(){
+
+    //背景画像の状態を判断して、背景画像の状態を変更
+    if (isBackgroundImage1){
+      background.style.backgroundImage = backgroundImage2;
+      isBackgroundImage1 = false;
+    } else {
+      background.style.backgroundImage = backgroundImage1;
+      isBackgroundImage1 = true;
+    }
+    });
+  </script>
+</body>
+
+</html>
