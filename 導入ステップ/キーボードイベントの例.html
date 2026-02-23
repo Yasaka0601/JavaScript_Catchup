@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>キーボードイベントの例</title>
+</head>
+<body>
+    <input type="text" id="inputField" placeholder="Type something">
+
+    <script>
+        let inputField = document.getElementById('inputField');
+
+        inputField.addEventListener('keydown', function(event) {
+            console.log('Key pressed: ' + event.key);
+        });
+    </script>
+</body>
+</html>

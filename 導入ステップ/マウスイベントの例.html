@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>マウスイベントの例</title>
+</head>
+<body>
+    <button id="hoverButton">Hover over me</button>
+
+    <script>
+        let button = document.getElementById('hoverButton');
+
+        button.addEventListener('mouseover', function() {
+            button.textContent = 'Mouse is over!';
+        });
+
+        button.addEventListener('mouseout', function() {
+            button.textContent = 'Hover over me';
+        });
+    </script>
+</body>
+</html>

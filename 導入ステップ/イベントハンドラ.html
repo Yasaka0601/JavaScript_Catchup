@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>addEventListenerでのイベントハンドラ</title>
+</head>
+<body>
+    <button id="myButton">Click me</button>
+    <script>
+        // alertを呼び出す関数
+        function showAlert() {
+            alert('Button clicked!');
+        }
+        let button = document.getElementById('myButton');
+        button.addEventListener('mouseover', showAlert);
+    </script>
+</body>
+</html>
