@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .rotate-left {
+      display: inline-block;
+      animation: rotate-left 1s linear;
+    }
+    @keyframes rotate-left {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    .rotate-right {
+      display: inline-block;
+      animation: rotate-right 1s linear;
+    }
+    @keyframes rotate-right {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(-360deg);
+      }
+    }
+  </style>
+
+</head>
+<body class="bg-slate-100">
+  <header>
+    <div class="bg-orange-400 text-white text-center py-4">
+      <h1 class="text-2xl font-bold">らんてくんのお部屋</h1>
+    </div>
+  </header>
+  <main class="p-14">
+    <div id="rantekun-background" class="relative m-auto" style="width: 896px; height: 360px; background-image: url(https://runteq3-curriculum-production.s3.ap-northeast-1.amazonaws.com/curriculum-img/bg-1.png); background-size: cover;">
+      <img src="https://runteq3-curriculum-production.s3.ap-northeast-1.amazonaws.com/curriculum-img/rantekun.svg" alt="らんてくん" width="158" height="246" id="rantekun" class="absolute" style="bottom: 28px; left: 374px;">
+    </div>
+  </main>
+  <script>
+    // ここにJavaScriptのコードを記述します
+
+    //ヘッダーの文字列を取得
+    const header = document.querySelector('header h1').textContent;
+
+    //ヘッダーの文字を配列に変換
+    const headerArray = header.split('');
+
+    //ヘッダーの要素を空にする
+    document.querySelector('header h1').textContent = '';
+
+    //1文字ずつアニメーションで回転する処理を記述する
+    for (let i =0;
+        i < headerArray.length;
+        i++)
+        {
+        //span要素を作成する
+        const span = document.createElement('span');
+        //span要素に文字列を設定する
+        span.textContent = headerArray[i];
+        if (i % 2 === 0){
+          //span要素に左回転のアニメーションのクラスを追加
+          span.classList.add('rotate-left');
+        } else {
+          //span要素に右回転のアニメーションクラスを追加
+          span.classList.add('rotate-right');
+        }
+        //span要素のアニメーション開始時間設定
+        span.style.animationDelay = i * 100 + 'ms';
+        //span要素をヘッダーに追加する
+        document.querySelector('header h1').appendChild(span);
+        }
+  </script>
+</body>
+</html>
