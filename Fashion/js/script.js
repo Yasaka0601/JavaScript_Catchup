@@ -59,3 +59,39 @@ window.addEventListener('load', () => {
     )
 });
 
+/*
+画像ギャラリー
+================================= */
+//大きい画像の要素を取得
+const mainImage = document.querySelector('.gallery-image img');
+
+//サムネイル画像の要素を取得
+const thumbImages = document.querySelectorAll('.gallery-thumbnails img');
+
+// for(let i = 0; i < thumbImages.length; i++) {
+//     thumbImages[i].addEventListener('mouseover', (event) => {
+//         //console.log(event.target.src);
+//         mainImage.src = event.target.src;
+//         mainImage.animate({opacity: [0, 1]}, 500);
+//     })
+//}
+
+thumbImages.forEach((thumbImage) => {
+    //console.log(thumbImage);
+        thumbImage.addEventListener('mouseover', (event) => {
+        mainImage.src = event.target.src;
+        mainImage.animate({opacity: [0, 1]}, 500);
+    });
+});
+
+// const animals = ['猫', '🐂', '虎', 'うさぎ'];
+
+// // animals.forEach((animal) => {
+// //     console.log(animal);
+// // })
+
+// const showAnimals = (animal) => {
+//     console.log(animal);
+// }
+
+// animals.forEach(showAnimals);
