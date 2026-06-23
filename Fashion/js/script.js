@@ -29,7 +29,7 @@ window.addEventListener('load', () => {
     //ローディング中（薄緑色スクリーン）
     loadingAreaGreen.animate(
         {
-            translate: ['0 100vh', '0 0', '0 -100vh'] //translateプロパティ
+            translate: ['0 100vh', '0 0', '0 -100vh'] //translateプロパティ、下から上に出したり、横から出したり指定。
         },
         {
             duration: 2000, //アニメーションの再生時間 2000ミリ秒（２秒）
@@ -95,3 +95,52 @@ thumbImages.forEach((thumbImage) => {
 // }
 
 // animals.forEach(showAnimals);
+
+/*
+メニューボタン
+=======================*/
+//HTMLの各要素を取得
+const menuOpen = document.querySelector('#menu-open');
+const menuClose = document.querySelector('#menu-close');
+const menuPanel = document.querySelector('#menu-panel');
+const menuItems = document.querySelectorAll('#menu-panel li');
+//メニューボタンの動きの詳細
+const menuOptions = {
+    duration: 1400, //アニメーションの再生時間 1400ミリ秒（1.4秒）
+    easing: 'ease', //アニメーションが変化するタイミング。開始、終了で緩やかに変化
+    fill: 'forwards', //アニメーションの再生前後の状態。
+}
+
+
+
+//メニューを開く
+menuOpen.addEventListener('click', () => {
+    //console.log('メニューを開く');
+    //
+    menuPanel.animate({translate: ['100vw', 0]}, menuOptions);//translateプロパティ、下から上に出したり、横から出したり指定。
+
+    //リンクを一つ一つ順に表示
+    menuItems.forEach((menuItem, index) => {
+        console.log(`${index}番目のリスト`);
+        menuItem.animate(
+            {
+                opacity: [0, 1],
+                translate: ['2rem', 0],
+            },
+            {
+                duration: 2400, //アニメーションの再生時間 2400ミリ秒（2.4秒）
+                delay: 300 * index,
+                easing: 'ease', //アニメーションが変化するタイミング。開始、終了で緩やかに変化
+                fill: 'forwards', //アニメーションの再生前後の状態。
+            }
+        );
+    });
+});
+
+//メニューを閉じる
+menuClose.addEventListener('click', () => {
+    menuPanel.animate({translate: [0, '100vw']}, menuOptions);
+    menuItems.forEach((menuItem) => {
+        menuItem.animate({opacity: [1, 0]}, menuOptions);
+    })
+})
