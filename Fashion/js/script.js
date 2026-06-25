@@ -144,3 +144,38 @@ menuClose.addEventListener('click', () => {
         menuItem.animate({opacity: [1, 0]}, menuOptions);
     })
 })
+
+
+/*
+スクロールで要素を表示
+===========================*/
+// 監視対象が範囲内に現れたら実行する動作
+const animateFade = (entries, obs) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.animate(
+                {
+                    opacity: [0, 1],
+                    filter: ['blur(.4rem)', 'blur(0)'],
+                    translate: ['0 4rem', 0],
+                },
+                {
+                    duration: 2000,
+                    easing: 'ease',
+                    fill: 'forwards',
+                }
+            );
+            obs.unobserve(entry.target);
+        }
+    });
+};
+
+//監視設定
+const fadeObserver = new IntersectionObserver(animateFade);//監視対象が画面に入ると animateFade が実行される。
+
+//.fadeinを監視するよう指示
+const fadeElements = document.querySelectorAll('.fadein');
+//forEachを使ってfadeElementの要素を一つ一つ取り出し、fadeObserverに渡している。querySelectorAllを使うと配列になる。
+fadeElements.forEach((fadeElement) => {
+    fadeObserver.observe(fadeElement);
+});
